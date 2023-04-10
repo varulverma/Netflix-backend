@@ -12,6 +12,23 @@ const UserSchema = new Schema({
   creationDate: Date,
   role: String,
   state: String,
+  profiles: [{ profileId: String, name: String }],
+  watchHistory: [
+    {
+      showId: String,
+      series: [
+        {
+          seriesId: String,
+          episodes: [
+            {
+              videoId: String,
+              watchTime: Number,
+            },
+          ],
+        },
+      ],
+    },
+  ],
 });
 
 module.exports ={

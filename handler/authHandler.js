@@ -13,6 +13,19 @@ function login(req, res) {
         })
     .catch((error) => res.status(500).send(error));
 }
+
+function logout(req, res) {
+  AuthService.logout(req.user.userId)
+    .then(() => {
+      res.status(200).send("logout out succesfully");
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send(error);
+    });
+}
+
 module.exports ={
-    login
+    login,
+    logout,
 };

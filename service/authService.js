@@ -21,6 +21,12 @@ function login(email, password) {
   });
 }
 
+function logout(userId) {
+  SessionAccessor.getSessionByUserId(req.userId).then((sessions) => {
+    return Promise.all(sessions.map((session) => session.remove()));
+  });
+}
+
 module.exports = {
   login,
 };
